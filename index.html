@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jhon Trauco — Desarrollo web en Amazonas, Perú</title>
+  <meta name="description" content="Hago páginas web rápidas y claras para negocios de Amazonas. Estudiante de Ingeniería de Sistemas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variables */
+    :root {
+      --niebla:  #E9EAE3;
+      --tinta:   #16221E;
+      --musgo:   #2F5D50;
+      --ambar:   #D9A21B;
+      --piedra:  #7C8B85;
+      --papel:   #F5F6F1;
+
+      --display: 'Bricolage Grotesque', system-ui, sans-serif;
+      --cuerpo:  'Public Sans', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+    }
+
+    /* Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--niebla);
+      color: var(--tinta);
+      font-family: var(--cuerpo);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--musgo);
+      outline-offset: 3px;
+    }
+
+    .etiqueta {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--piedra);
+    }
+
+    /* Cabecera */
+    .cabecera {
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--musgo); }
+
+    .cabecera-enlace {
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid var(--ambar);
+      padding-bottom: 2px;
+    }
+
+    /* Portada */
+    .portada { padding: 64px 0 88px; }
+
+    .portada h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin: 20px 0 24px;
+      max-width: 15ch;
+    }
+
+    .portada h1 em {
+      font-style: normal;
+      color: var(--musgo);
+    }
+
+    .portada p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: #3A4A44;
+      max-width: 52ch;
+      margin-bottom: 36px;
+    }
+
+    /* Botones */
+    .botones { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .boton {
+      display: inline-block;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .boton-lleno {
+      background: var(--musgo);
+      color: var(--papel);
+    }
+
+    .boton-lleno:hover { background: #24463D; transform: translateY(-2px); }
+
+    .boton-borde {
+      border: 1.5px solid var(--tinta);
+      color: var(--tinta);
+    }
+
+    .boton-borde:hover { background: var(--tinta); color: var(--papel); transform: translateY(-2px); }
+
+    /* Servicios */
+    .seccion { padding: 72px 0; }
+
+    .seccion-titulo {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      letter-spacing: -0.02em;
+      margin: 12px 0 40px;
+    }
+
+    .grilla {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tarjeta {
+      background: var(--papel);
+      border: 1px solid #D6D8CF;
+      border-radius: 14px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tarjeta h3 {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 14px 0 10px;
+    }
+
+    .tarjeta p {
+      color: #4A5A54;
+      font-size: 15.5px;
+      flex-grow: 1;
+    }
+
+    .precio {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--musgo);
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #D6D8CF;
+    }
+
+    /* Historial */
+    .historial { list-style: none; border-left: 2px solid #D0D3C9; }
+
+    .commit {
+      position: relative;
+      padding: 0 0 30px 30px;
+    }
+
+    .commit::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--niebla);
+      border: 2px solid var(--musgo);
+    }
+
+    .commit.actual::before { background: var(--ambar); border-color: var(--ambar); }
+
+    .commit-hash {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--piedra);
+    }
+
+    .commit-titulo {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-top: 2px;
+    }
+
+    .commit-detalle { color: #4A5A54; font-size: 15px; }
+
+    /* Contacto */
+    .contacto {
+      background: var(--tinta);
+      color: var(--papel);
+      border-radius: 20px;
+      padding: clamp(38px, 6vw, 64px);
+      margin: 40px 0 72px;
+    }
+
+    .contacto h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin: 14px 0 16px;
+      max-width: 18ch;
+    }
+
+    .contacto p {
+      color: #B9C4BF;
+      max-width: 46ch;
+      margin-bottom: 32px;
+    }
+
+    .contacto .etiqueta { color: var(--ambar); }
+
+    .contacto .boton-lleno { background: var(--ambar); color: var(--tinta); }
+    .contacto .boton-lleno:hover { background: #E8B32C; }
+
+    .contacto .boton-borde { border-color: #5E6E68; color: var(--papel); }
+    .contacto .boton-borde:hover { background: var(--papel); color: var(--tinta); }
+
+    /* Pie de página */
+    .pie {
+      border-top: 1px solid #D0D3C9;
+      padding: 28px 0 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--piedra);
+    }
+
+    .pie a { text-decoration: none; }
+    .pie a:hover { color: var(--musgo); }
+
+    /* Animación de aparición */
+    .aparece {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .aparece.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .aparece { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+    <header class="cabecera">
+      <a href="#" class="logo">jhon<span>trauco</span>.dev</a>
+      <a href="#contacto" class="cabecera-enlace">Conversemos</a>
+    </header>
+  </div>
+
+  <main>
+    <div class="contenedor">
+      <section class="portada">
+        <p class="etiqueta">Amazonas, Perú · Disponible para proyectos</p>
+
+        <h1>Páginas web para negocios que <em>todavía no tienen una</em>.</h1>
+
+        <p>
+          Soy Jhon Trauco, estudiante de Ingeniería de Sistemas. Diseño y programo
+          sitios rápidos, que se ven bien en el celular y que hacen que tus
+          clientes te encuentren y te escriban.
+        </p>
+
+        <div class="botones">
+          <a class="boton boton-lleno" href="https://wa.me/51944429458">Escríbeme por WhatsApp</a>
+          <a class="boton boton-borde" href="#servicios">Ver qué hago</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <section class="seccion aparece" id="servicios">
+        <p class="etiqueta">Servicios</p>
+        <h2 class="seccion-titulo">Tres formas de trabajar juntos</h2>
+
+        <div class="grilla">
+          <article class="tarjeta">
+            <p class="etiqueta">Una página</p>
+            <h3>Presencia básica</h3>
+            <p>
+              Un sitio de una sola página con tus servicios, fotos, horarios,
+              ubicación en el mapa y botón directo a WhatsApp. Listo en una semana.
+            </p>
+            <p class="precio">desde S/ 350</p>
+          </article>
+
+          <article class="tarjeta">
+            <p class="etiqueta">Varias páginas</p>
+            <h3>Sitio completo</h3>
+            <p>
+              Inicio, servicios, galería y contacto. Pensado para hospedajes,
+              restaurantes y negocios que necesitan mostrar bastante.
+            </p>
+            <p class="precio">desde S/ 800</p>
+          </article>
+
+          <article class="tarjeta">
+            <p class="etiqueta">Mensual</p>
+            <h3>Mantenimiento</h3>
+            <p>
+              Actualizo precios, fotos y textos cuando lo necesites, y me encargo
+              de que el sitio siga rápido y sin caídas.
+            </p>
+            <p class="precio">S/ 120 al mes</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <section class="seccion aparece">
+        <p class="etiqueta">Historial</p>
+        <h2 class="seccion-titulo">En qué estoy trabajando</h2>
+
+        <ol class="historial">
+          <li class="commit actual">
+            <span class="commit-hash">a1f3c9d · ahora</span>
+            <p class="commit-titulo">Publicando mi primer sitio</p>
+            <p class="commit-detalle">HTML y CSS, alojado en GitHub Pages.</p>
+          </li>
+          <li class="commit">
+            <span class="commit-hash">7b2e04a · siguiente</span>
+            <p class="commit-titulo">JavaScript</p>
+            <p class="commit-detalle">Formularios, interacción y consumo de datos.</p>
+          </li>
+          <li class="commit">
+            <span class="commit-hash">c5d81f6 · siguiente</span>
+            <p class="commit-titulo">React</p>
+            <p class="commit-detalle">Interfaces por componentes.</p>
+          </li>
+          <li class="commit">
+            <span class="commit-hash">e9a7b32 · meta</span>
+            <p class="commit-titulo">Node y base de datos</p>
+            <p class="commit-detalle">Aplicaciones completas, de la pantalla al servidor.</p>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <section class="contacto aparece" id="contacto">
+        <p class="etiqueta">Contacto</p>
+        <h2>¿Tu negocio todavía no aparece en internet?</h2>
+        <p>
+          Cuéntame qué haces y te digo sin compromiso qué necesitarías y cuánto
+          costaría. Respondo el mismo día.
+        </p>
+
+        <div class="botones">
+          <a class="boton boton-lleno" href="https://wa.me/51944429458">WhatsApp</a>
+          <a class="boton boton-borde" href="mailto:jhontrauco.dev@gmail.com">Correo</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="contenedor">
+    <footer class="pie">
+      <span>© 2026 Jhon Trauco · Amazonas, Perú</span>
+      <span>
+        <a href="https://github.com/jhontrauco">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/jhontrauco/">LinkedIn</a>
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('visible');
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.aparece').forEach((el) => observador.observe(el));
+  </script>
+
+</body>
+</html>
