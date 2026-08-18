@@ -299,11 +299,14 @@ main { counter-reset: seccion; }
     padding: 4px 24px 20px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transicion);
+    visibility: hidden;
+    transition: max-height var(--transicion), visibility 0s linear var(--transicion);
   }
 
   #menu-toggle:checked ~ .contenedor .nav-envoltura {
     max-height: 320px;
+    visibility: visible;
+    transition: max-height var(--transicion), visibility 0s linear 0s;
   }
 
   .nav { flex-direction: column; gap: 2px; }
