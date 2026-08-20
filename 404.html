@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Página no encontrada — jhontrauco.dev</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232F5D50'/><text x='50%25' y='50%25' dy='.35em' text-anchor='middle' font-family='monospace' font-size='30' font-weight='bold' fill='%23E9EAE3'>jt</text></svg>">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <meta name="theme-color" content="#E9EAE3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101614" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    var guardado = localStorage.getItem('tema');
+    var tema = guardado || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro');
+    document.documentElement.setAttribute('data-tema', tema);
+  </script>
+</head>
+
+<body>
+  <main class="pagina-404">
+    <div class="contenedor pagina-404-contenido">
+      <p class="etiqueta">404</p>
+      <h1>Esta página no existe</h1>
+      <p class="portada-texto">
+        Puede que el enlace esté roto o la página se haya movido.
+      </p>
+      <a class="boton boton-lleno" href="index.html">Volver al inicio</a>
+    </div>
+  </main>
+</body>
+</html>

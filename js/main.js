@@ -55,7 +55,13 @@ const observadorNav = new IntersectionObserver((entradas) => {
   entradas.forEach((entrada) => {
     if (!entrada.isIntersecting) return;
     enlacesNav.forEach((a) => {
-      a.classList.toggle('activo', a.getAttribute('href') === '#' + entrada.target.id);
+      const esActivo = a.getAttribute('href') === '#' + entrada.target.id;
+      a.classList.toggle('activo', esActivo);
+      if (esActivo) {
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.removeAttribute('aria-current');
+      }
     });
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
@@ -129,14 +135,29 @@ formulario.querySelectorAll('[required]').forEach((campo) => {
   campo.addEventListener('input', () => campo.classList.remove('error'));
 });
 
-/* ---------- 7. CIERRE DEL MENÚ MÓVIL ---------- */
+/* ---------- 7. MENÚ MÓVIL ---------- */
 const menuToggle = document.getElementById('menu-toggle');
-const menuBoton = document.querySelector('.menu-boton');
-const navEnvoltura = document.querySelector('.nav-envoltura');
+const navEnvoltura = document.getElementById('nav-envoltura');
+
+function menuAbierto() {
+  return navEnvoltura.classList.contains('abierta');
+}
+
+function abrirMenu() {
+  navEnvoltura.classList.add('abierta');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+}
 
 function cerrarMenu() {
-  menuToggle.checked = false;
+  navEnvoltura.classList.remove('abierta');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
 }
+
+menuToggle.addEventListener('click', () => {
+  menuAbierto() ? cerrarMenu() : abrirMenu();
+});
 
 // Tocar un enlace del menú lo cierra, en vez de dejarlo tapando la página
 navEnvoltura.querySelectorAll('a').forEach((enlace) => {
@@ -145,15 +166,15 @@ navEnvoltura.querySelectorAll('a').forEach((enlace) => {
 
 // Tocar fuera del menú también lo cierra
 document.addEventListener('click', (evento) => {
-  if (!menuToggle.checked) return;
-  const dentroDelMenu = navEnvoltura.contains(evento.target) || menuBoton.contains(evento.target);
-  if (dentroDelMenu || evento.target === menuToggle) return;
+  if (!menuAbierto()) return;
+  const dentroDelMenu = navEnvoltura.contains(evento.target) || menuToggle.contains(evento.target);
+  if (dentroDelMenu) return;
   cerrarMenu();
 });
 
-// Esc cierra el menú y devuelve el foco al control
+// Esc cierra el menú y devuelve el foco al botón
 document.addEventListener('keydown', (evento) => {
-  if (evento.key === 'Escape' && menuToggle.checked) {
+  if (evento.key === 'Escape' && menuAbierto()) {
     cerrarMenu();
     menuToggle.focus();
   }

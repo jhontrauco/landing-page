@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Jhon Trauco — Desarrollo web en Amazonas, Perú</title>
-  <meta name="description" content="Hago páginas web rápidas y claras para negocios de Amazonas. Estudiante de Ingeniería de Sistemas.">
+  <title>Jhon Trauco — Desarrollo web en Chachapoyas, Amazonas</title>
+  <meta name="description" content="Hago páginas web rápidas y claras para negocios de Chachapoyas y Amazonas. Estudiante de Ingeniería de Sistemas.">
   <meta name="author" content="Jhon Trauco">
   <link rel="canonical" href="https://jhontrauco.github.io/landing-page/">
 
@@ -13,20 +13,24 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_PE">
   <meta property="og:url" content="https://jhontrauco.github.io/landing-page/">
-  <meta property="og:title" content="Jhon Trauco — Desarrollo web en Amazonas">
+  <meta property="og:title" content="Jhon Trauco — Desarrollo web en Chachapoyas, Amazonas">
   <meta property="og:description" content="Páginas web para negocios que todavía no tienen una.">
   <meta property="og:image" content="https://jhontrauco.github.io/landing-page/img/preview.png">
+  <meta property="og:image:alt" content="Portada del sitio de Jhon Trauco, desarrollo web en Amazonas, Perú.">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Icono de la pestaña, dibujado en SVG dentro del propio enlace -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232F5D50'/><text x='50%25' y='50%25' dy='.35em' text-anchor='middle' font-family='monospace' font-size='30' font-weight='bold' fill='%23E9EAE3'>jt</text></svg>">
+
+  <!-- Icono al agregar el sitio a la pantalla de inicio (iOS no acepta SVG acá) -->
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
   <meta name="theme-color" content="#E9EAE3" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#101614" media="(prefers-color-scheme: dark)">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/estilos.css">
 
@@ -50,6 +54,16 @@
     "address": { "@type": "PostalAddress", "addressRegion": "Amazonas", "addressCountry": "PE" }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Jhon Trauco — Desarrollo web",
+    "url": "https://jhontrauco.github.io/landing-page/",
+    "areaServed": ["Chachapoyas", "Amazonas"],
+    "priceRange": "S/ 350 - S/ 800"
+  }
+  </script>
 </head>
 
 <body>
@@ -57,12 +71,10 @@
   <a href="#contenido" class="salto-contenido">Saltar al contenido</a>
 
   <header class="cabecera">
-    <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Abrir menú de navegación">
-
     <div class="contenedor cabecera-fila">
       <a href="#" class="logo">jhon<span>trauco</span>.dev</a>
 
-      <div class="nav-envoltura">
+      <div class="nav-envoltura" id="nav-envoltura">
         <nav class="nav" aria-label="Navegación principal">
           <a href="#servicios">Servicios</a>
           <a href="#proyectos">Proyectos</a>
@@ -76,10 +88,10 @@
         <button type="button" id="tema" class="tema" aria-label="Cambiar entre modo claro y oscuro">
           <span class="tema-icono" aria-hidden="true"></span>
         </button>
-        <label for="menu-toggle" class="menu-boton">
+        <button type="button" id="menu-toggle" class="menu-boton" aria-expanded="false" aria-controls="nav-envoltura" aria-label="Abrir menú de navegación">
           <svg class="icono-abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icono-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-        </label>
+        </button>
       </div>
     </div>
   </header>
@@ -103,7 +115,7 @@
         </p>
 
         <div class="botones">
-          <a class="boton boton-lleno" href="https://wa.me/51944429458" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+          <a class="boton boton-lleno" href="https://wa.me/51944429458?text=Hola%20Jhon%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
           <a class="boton boton-borde" href="#servicios">Ver qué hago</a>
         </div>
 
@@ -125,6 +137,7 @@
     </div>
 
     <!-- SERVICIOS -->
+    <div class="banda banda-alt">
     <div class="contenedor">
       <section class="seccion aparece" id="servicios">
         <p class="etiqueta">Servicios</p>
@@ -132,6 +145,9 @@
 
         <div class="grilla">
           <article class="tarjeta">
+            <div class="tarjeta-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+            </div>
             <p class="etiqueta">Una página</p>
             <h3>Presencia básica</h3>
             <p>
@@ -148,6 +164,9 @@
 
           <article class="tarjeta tarjeta-destacada">
             <span class="insignia-destacada">Recomendado</span>
+            <div class="tarjeta-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M7 7V5.5A1.5 1.5 0 0 1 8.5 4h9A1.5 1.5 0 0 1 19 5.5V16"/></svg>
+            </div>
             <p class="etiqueta">Varias páginas</p>
             <h3>Sitio completo</h3>
             <p>
@@ -163,6 +182,9 @@
           </article>
 
           <article class="tarjeta">
+            <div class="tarjeta-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.34 5.66"/><polyline points="20 4 20 11 13 11"/></svg>
+            </div>
             <p class="etiqueta">Mensual</p>
             <h3>Mantenimiento</h3>
             <p>
@@ -178,6 +200,7 @@
           </article>
         </div>
       </section>
+    </div>
     </div>
 
     <!-- PROYECTOS -->
@@ -241,6 +264,7 @@
     </div>
 
     <!-- SOBRE MÍ -->
+    <div class="banda banda-alt">
     <div class="contenedor">
       <section class="seccion aparece" id="sobre-mi">
         <p class="etiqueta">Sobre mí</p>
@@ -266,20 +290,21 @@
         </ul>
       </section>
     </div>
+    </div>
 
     <!-- CONTACTO -->
     <div class="contenedor">
       <section class="contacto aparece" id="contacto">
         <div class="contacto-texto">
           <p class="etiqueta">Contacto</p>
-          <h2>¿Tu negocio todavía no aparece en internet?</h2>
+          <h2>¿Tu negocio en Chachapoyas todavía no aparece en internet?</h2>
           <p>
             Cuéntame qué haces y te digo sin compromiso qué necesitarías y cuánto
             costaría. Respondo el mismo día.
           </p>
 
           <div class="botones">
-            <a class="boton boton-lleno" href="https://wa.me/51944429458" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="boton boton-lleno" href="https://wa.me/51944429458?text=Hola%20Jhon%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">WhatsApp</a>
             <a class="boton boton-borde" href="mailto:jhontrauco.dev@gmail.com">Correo</a>
           </div>
         </div>

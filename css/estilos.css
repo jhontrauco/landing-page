@@ -9,7 +9,7 @@
 /* ---------- 1. TOKENS ---------- */
 :root {
   --fondo:        #E9EAE3;
-  --superficie:   #F5F6F1;
+  --superficie:   #FDFDFB;
   --texto:        #16221E;
   --texto-suave:  #4A5A54;
   --tenue:        #7C8B85;
@@ -17,6 +17,12 @@
   --acento-alto:  #24463D;
   --realce:       #B8860B;
   --borde:        #D6D8CF;
+
+  --exito:              #7FD1A8;
+  --fallo:              #E0736B;
+  --texto-sobre-realce: #16221E;
+  --sombra-sm: 0 1px 2px color-mix(in srgb, var(--texto) 6%, transparent),
+               0 4px 12px -6px color-mix(in srgb, var(--texto) 10%, transparent);
 
   --display: 'Bricolage Grotesque', system-ui, sans-serif;
   --cuerpo:  'Public Sans', system-ui, sans-serif;
@@ -31,7 +37,7 @@
 /* Modo oscuro: se activa solo, según la configuración del sistema */
 :root[data-tema="oscuro"] {
   --fondo:        #101614;
-  --superficie:   #17201D;
+  --superficie:   #1A2320;
   --texto:        #E8EDEA;
   --texto-suave:  #B4C2BC;
   --tenue:        #8FA099;
@@ -39,6 +45,15 @@
   --acento-alto:  #8ACCB4;
   --realce:       #E0B03A;
   --borde:        #26332E;
+
+  /* El panel de Contacto usa --texto como fondo, así que se invierte con el
+     tema: acá el panel se vuelve claro, y estos colores necesitan ser
+     oscuros para seguir leyéndose (ver nota en Sistema de diseño). */
+  --exito: #1F7A4D;
+  --fallo: #B03A30;
+
+  --sombra-sm: 0 1px 2px rgb(0 0 0 / 0.3),
+               0 4px 12px -6px rgb(0 0 0 / 0.4);
 }
 
 /* ---------- 2. BASE ---------- */
@@ -166,7 +181,7 @@ main { counter-reset: seccion; }
   z-index: 50;
   background: color-mix(in srgb, var(--superficie) 92%, transparent);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--borde);
+  border-bottom: 1px solid transparent;
   transition: border-color var(--transicion), box-shadow var(--transicion);
 }
 
@@ -194,18 +209,6 @@ main { counter-reset: seccion; }
 
 .logo span { color: var(--acento); }
 
-.menu-checkbox {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 .nav-envoltura { display: flex; align-items: center; gap: 26px; }
 
 .nav { display: flex; gap: 26px; }
@@ -227,6 +230,7 @@ main { counter-reset: seccion; }
   height: 34px;
   border-radius: 50%;
   border: 1px solid var(--borde);
+  background: transparent;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -240,13 +244,8 @@ main { counter-reset: seccion; }
 
 .menu-boton .icono-cerrar { display: none; }
 
-#menu-toggle:checked ~ .contenedor .menu-boton .icono-abrir { display: none; }
-#menu-toggle:checked ~ .contenedor .menu-boton .icono-cerrar { display: block; }
-
-#menu-toggle:focus-visible ~ .contenedor .menu-boton {
-  outline: 3px solid var(--acento);
-  outline-offset: 3px;
-}
+.menu-boton[aria-expanded="true"] .icono-abrir { display: none; }
+.menu-boton[aria-expanded="true"] .icono-cerrar { display: block; }
 
 .cabecera-enlace {
   font-size: 15px;
@@ -303,7 +302,7 @@ main { counter-reset: seccion; }
     transition: max-height var(--transicion), visibility 0s linear var(--transicion);
   }
 
-  #menu-toggle:checked ~ .contenedor .nav-envoltura {
+  .nav-envoltura.abierta {
     max-height: 320px;
     visibility: visible;
     transition: max-height var(--transicion), visibility 0s linear 0s;
@@ -320,7 +319,7 @@ main { counter-reset: seccion; }
 }
 
 /* ---------- 5. PORTADA ---------- */
-.portada { padding: 68px 0 84px; position: relative; }
+.portada { padding: 88px 0 100px; position: relative; }
 
 .portada::before {
   content: "";
@@ -386,6 +385,13 @@ main { counter-reset: seccion; }
 /* ---------- 6. SECCIONES Y TARJETAS ---------- */
 .seccion { padding: 68px 0; }
 
+/* Banda: rompe la monotonía de fondo único entre secciones seguidas */
+.banda-alt { background: var(--superficie); }
+
+/* Dentro de una banda, las tarjetas vuelven a --fondo para no perder
+   contraste contra su propio fondo de sección */
+.banda-alt .tarjeta { background: var(--fondo); }
+
 .seccion-titulo {
   font-family: var(--display);
   font-weight: 600;
@@ -409,6 +415,7 @@ main { counter-reset: seccion; }
 .seccion.aparece.visible .grilla > *:nth-child(1) { transition-delay: 0.05s; }
 .seccion.aparece.visible .grilla > *:nth-child(2) { transition-delay: 0.15s; }
 .seccion.aparece.visible .grilla > *:nth-child(3) { transition-delay: 0.25s; }
+.seccion.aparece.visible .grilla > *:nth-child(n+4) { transition-delay: 0.35s; }
 
 .seccion.aparece.visible .grilla > * {
   opacity: 1;
@@ -422,6 +429,7 @@ main { counter-reset: seccion; }
   padding: 30px 26px;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--sombra-sm);
   transition: transform var(--transicion), border-color var(--transicion), box-shadow var(--transicion);
 }
 
@@ -430,6 +438,19 @@ main { counter-reset: seccion; }
   border-color: var(--acento);
   box-shadow: 0 14px 28px -16px color-mix(in srgb, var(--acento) 40%, transparent);
 }
+
+.tarjeta-icono {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--acento) 12%, transparent);
+  color: var(--acento);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.tarjeta-icono svg { width: 22px; height: 22px; }
 
 .tarjeta-destacada { border-color: var(--acento); position: relative; }
 
@@ -593,7 +614,7 @@ main { counter-reset: seccion; }
   color: var(--fondo);
   border-radius: var(--radio-lg);
   padding: clamp(34px, 5vw, 56px);
-  margin: 40px 0 72px;
+  margin: 56px 0 88px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 44px;
@@ -620,7 +641,7 @@ main { counter-reset: seccion; }
 
 .contacto .botones { margin-top: 28px; }
 
-.contacto .boton-lleno { background: var(--realce); color: #16221E; }
+.contacto .boton-lleno { background: var(--realce); color: var(--texto-sobre-realce); }
 .contacto .boton-lleno:hover { background: color-mix(in srgb, var(--realce) 85%, white); }
 
 .contacto .boton-borde {
@@ -661,12 +682,12 @@ main { counter-reset: seccion; }
   background: color-mix(in srgb, var(--fondo) 12%, transparent);
 }
 
-.campo input.error, .campo textarea.error { border-color: #E0736B; }
+.campo input.error, .campo textarea.error { border-color: var(--fallo); }
 
 .boton-enviar {
   width: 100%;
   background: var(--realce);
-  color: #16221E;
+  color: var(--texto-sobre-realce);
   margin-top: 6px;
 }
 
@@ -680,8 +701,8 @@ main { counter-reset: seccion; }
   color: color-mix(in srgb, var(--fondo) 72%, transparent);
 }
 
-.aviso.exito { color: #7FD1A8; }
-.aviso.fallo { color: #E0736B; }
+.aviso.exito { color: var(--exito); }
+.aviso.fallo { color: var(--fallo); }
 
 /* ---------- 8. PIE Y ANIMACIONES ---------- */
 .pie { border-top: 1px solid var(--borde); background: var(--superficie); }
@@ -718,6 +739,27 @@ main { counter-reset: seccion; }
 }
 
 .aparece.visible { opacity: 1; transform: none; }
+
+/* Página 404 */
+.pagina-404 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.pagina-404-contenido { text-align: center; margin: 0 auto; }
+
+.pagina-404 h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  margin: 16px 0 14px;
+}
+
+.pagina-404 .portada-texto { margin: 0 auto 28px; }
+
+.pagina-404 .boton { display: inline-block; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
