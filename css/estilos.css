@@ -571,9 +571,15 @@ main { counter-reset: seccion; }
 }
 
 /* Proyectos */
-.proyecto-imagen {
+.proyecto-imagen-envoltura {
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.proyecto-imagen {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
