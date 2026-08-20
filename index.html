@@ -101,38 +101,52 @@
     <!-- PORTADA -->
     <div class="contenedor">
       <section class="portada">
-        <p class="etiqueta etiqueta-estado">
-          <span class="punto-estado" aria-hidden="true"></span>
-          Amazonas, Perú · Disponible para proyectos
-        </p>
+        <div class="portada-columnas">
+          <div class="portada-info">
+            <p class="etiqueta etiqueta-estado">
+              <span class="punto-estado" aria-hidden="true"></span>
+              Amazonas, Perú · Disponible para proyectos
+            </p>
 
-        <h1>Páginas web para negocios que <em>todavía no tienen una</em>.</h1>
+            <h1>Páginas web para negocios que <em>todavía no tienen una</em>.</h1>
 
-        <p class="portada-texto">
-          Soy Jhon Trauco, estudiante de Ingeniería de Sistemas. Diseño y programo
-          sitios rápidos, que se ven bien en el celular y que hacen que tus
-          clientes te encuentren y te escriban.
-        </p>
+            <p class="portada-texto">
+              Soy Jhon Trauco, estudiante de Ingeniería de Sistemas. Diseño y programo
+              sitios rápidos, que se ven bien en el celular y que hacen que tus
+              clientes te encuentren y te escriban.
+            </p>
 
-        <div class="botones">
-          <a class="boton boton-lleno" href="https://wa.me/51944429458?text=Hola%20Jhon%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
-          <a class="boton boton-borde" href="#servicios">Ver qué hago</a>
+            <div class="botones">
+              <a class="boton boton-lleno" href="https://wa.me/51944429458?text=Hola%20Jhon%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20una%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+              <a class="boton boton-borde" href="#servicios">Ver qué hago</a>
+            </div>
+
+            <dl class="datos">
+              <div class="dato">
+                <dt>Entrega</dt>
+                <dd>1 semana</dd>
+              </div>
+              <div class="dato">
+                <dt>Respuesta</dt>
+                <dd>El mismo día</dd>
+              </div>
+              <div class="dato">
+                <dt>Presupuesto</dt>
+                <dd>Sin costo</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="portada-mockup">
+            <div class="mockup-navegador">
+              <div class="mockup-barra">
+                <span></span><span></span><span></span>
+                <span class="mockup-direccion">jhontrauco.dev</span>
+              </div>
+              <img src="img/mockup-portada.jpg" alt="Captura de la portada del sitio jhontrauco.dev en modo claro, mostrando el titular y los botones de contacto." width="1200" height="800">
+            </div>
+          </div>
         </div>
-
-        <dl class="datos">
-          <div class="dato">
-            <dt>Entrega</dt>
-            <dd>1 semana</dd>
-          </div>
-          <div class="dato">
-            <dt>Respuesta</dt>
-            <dd>El mismo día</dd>
-          </div>
-          <div class="dato">
-            <dt>Presupuesto</dt>
-            <dd>Sin costo</dd>
-          </div>
-        </dl>
       </section>
     </div>
 
@@ -212,21 +226,24 @@
         <div class="grilla">
           <!-- Copia este bloque completo para agregar un proyecto nuevo -->
           <article class="proyecto">
-            <div class="proyecto-cabecera">
-              <h3>Sitio personal</h3>
-              <span class="insignia">2026</span>
+            <img class="proyecto-imagen" src="img/proyecto-sitio-personal.jpg" alt="Captura de la sección de servicios del sitio jhontrauco.dev, mostrando las tres tarjetas de precios." width="800" height="500" loading="lazy">
+            <div class="proyecto-cuerpo">
+              <div class="proyecto-cabecera">
+                <h3>Sitio personal</h3>
+                <span class="insignia">2026</span>
+              </div>
+              <p>
+                Página de presentación y servicios, construida sin frameworks ni
+                dependencias. Diseño adaptable, modo oscuro y despliegue continuo.
+              </p>
+              <ul class="tecnologias">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>GitHub Pages</li>
+              </ul>
+              <a class="enlace-flecha" href="https://github.com/jhontrauco/landing-page" target="_blank" rel="noopener">Ver código</a>
             </div>
-            <p>
-              Página de presentación y servicios, construida sin frameworks ni
-              dependencias. Diseño adaptable, modo oscuro y despliegue continuo.
-            </p>
-            <ul class="tecnologias">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>GitHub Pages</li>
-            </ul>
-            <a class="enlace-flecha" href="https://github.com/jhontrauco/landing-page" target="_blank" rel="noopener">Ver código</a>
           </article>
         </div>
       </section>
@@ -270,24 +287,30 @@
         <p class="etiqueta">Sobre mí</p>
         <h2 class="seccion-titulo">Por qué hago esto</h2>
 
-        <p class="seccion-texto">
-          Estudio Ingeniería de Sistemas porque me gusta resolver problemas
-          reales, no solo teoría. Aprendo haciendo: la mayoría de lo que sé de
-          desarrollo web lo aprendí construyendo este mismo sitio, no
-          memorizando un curso.
-        </p>
-        <p class="seccion-texto">
-          Soy autodidacta, directo y transparente. Si te digo que algo se
-          puede hacer en una semana, es porque lo puedo cumplir. Prefiero
-          avanzar y corregir en el camino antes que quedarme planeando de más.
-        </p>
+        <div class="sobre-mi-columnas">
+          <img class="sobre-mi-foto" src="img/foto-jhon.jpg" alt="Foto de Jhon Trauco, desarrollador web en Amazonas, Perú." width="800" height="800" loading="lazy">
 
-        <ul class="rasgos">
-          <li>Autodidacta</li>
-          <li>Resolutivo</li>
-          <li>Transparente</li>
-          <li>Responsable</li>
-        </ul>
+          <div class="sobre-mi-texto">
+            <p class="seccion-texto">
+              Estudio Ingeniería de Sistemas porque me gusta resolver problemas
+              reales, no solo teoría. Aprendo haciendo: la mayoría de lo que sé de
+              desarrollo web lo aprendí construyendo este mismo sitio, no
+              memorizando un curso.
+            </p>
+            <p class="seccion-texto">
+              Soy autodidacta, directo y transparente. Si te digo que algo se
+              puede hacer en una semana, es porque lo puedo cumplir. Prefiero
+              avanzar y corregir en el camino antes que quedarme planeando de más.
+            </p>
+
+            <ul class="rasgos">
+              <li>Autodidacta</li>
+              <li>Resolutivo</li>
+              <li>Transparente</li>
+              <li>Responsable</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
     </div>
