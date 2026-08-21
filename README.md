@@ -7,7 +7,7 @@ Cumple dos funciones: captar clientes locales que todavía no tienen
 presencia web (hospedajes, restaurantes, comercios de la ruta turística
 a Kuélap y Gocta), y servir de portafolio.
 
-**Sitio publicado:** https://jhontrauco.github.io/landing-page/
+**Sitio publicado:** https://jhontrauco.github.io/
 
 ## Stack
 
@@ -19,7 +19,7 @@ Los archivos del repositorio son exactamente los que sirve el navegador.
 ## Estructura
 
 ```
-landing-page/
+jhontrauco.github.io/
 ├── index.html
 ├── css/estilos.css
 ├── js/main.js

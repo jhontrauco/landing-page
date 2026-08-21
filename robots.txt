@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jhontrauco.github.io/landing-page/sitemap.xml
+Sitemap: https://jhontrauco.github.io/sitemap.xml

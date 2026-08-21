@@ -483,11 +483,14 @@ main { counter-reset: seccion; }
   display: flex;
   flex-direction: column;
   box-shadow: var(--sombra-sm);
-  overflow: hidden;
   transition: transform var(--transicion), border-color var(--transicion), box-shadow var(--transicion);
 }
 
+/* La tarjeta NO lleva overflow: hidden — la insignia "Recomendado" se apoya
+   fuera del borde superior (ver .insignia-destacada) y quedaría cortada. */
 .tarjeta { padding: 30px 26px; }
+
+.proyecto { overflow: hidden; }
 
 .tarjeta:hover, .proyecto:hover {
   transform: translateY(-3px);
